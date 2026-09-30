@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {validateReport} from '../lib/report.ts';
+const report=JSON.parse(readFileSync('public/data/demo.json','utf8'));
+assert.equal(validateReport(report).symbols.length,30);
+const rejects=change=>{const r=structuredClone(report);change(r);assert.throws(()=>validateReport(r));};
+rejects(r=>r.source.kind='live');
+rejects(r=>r.snapshots['20'].distance[0][0]=1);
+rejects(r=>r.snapshots['20'].h1[0]=[2,1]);
+rejects(r=>r.timeline[1].date=r.timeline[0].date);
+rejects(r=>r.targets.NVDA.direction.folds[0].labelEnd=r.targets.NVDA.direction.folds[0].origin);
+rejects(r=>r.targets.NVDA.direction.latest[0]=1.1);
+rejects(r=>r.method.features=[6,21,999]);
+rejects(r=>r.targets.NVDA.direction.rows[0].actual=2);
+console.log('Report schema: valid artifact and 8 malformed cases passed.');

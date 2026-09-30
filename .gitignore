@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.venv/
+.vercel/
+.env*
+__pycache__/
+*.pyc
+*.log
+*.tsbuildinfo
+qa/
+/data/
+/research.json
