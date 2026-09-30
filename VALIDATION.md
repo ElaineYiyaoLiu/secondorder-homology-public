@@ -12,10 +12,18 @@ Checked on 2026-09-30 for v0.1.
 
 The local build used `NODE_OPTIONS='--require ./scripts/local-build-shim.cjs'` for the container's unavailable OS RSS query. Vercel uses the normal `npm run build` command.
 
-## Pending
+## Deployment verification
 
-- Repository rename, Public mirror creation, Vercel Production deployment and live-site verification are not complete.
-- Real-browser desktop/mobile layout checks were not run in this verification.
+- Private repository: `ElaineYiyaoLiu/secondorder-homology-private`, with only `v0.1`; temporary template mode is disabled.
+- Public repository: `ElaineYiyaoLiu/secondorder-homology-public`, with only `main`. All 27 source files match the approved Private snapshot by Git blob SHA.
+- Vercel Production successfully built the Public `main` branch using the normal build command.
+- Live site: https://secondorder-homology-public.vercel.app/
+- Browser checks passed for the complete 30-asset report, Chinese/English, 20D/60D scale switching, H0/H1, Forecast and Backtest views. Desktop geometry layout was visually inspected.
+- No application console errors were observed; a browser-extension metadata error was excluded.
+
+## Not verified
+
+- Mobile browser layout was not checked.
 - No live market-data provider or real-market forecasting advantage was tested. The default report remains explicitly synthetic.
 
 ## Reproduce
